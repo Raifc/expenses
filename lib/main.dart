@@ -1,3 +1,4 @@
+import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,15 +15,37 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final _transactions = [
+    Transaction(
+        id: '1', title: 'logitech mouse', value: 620.00, date: DateTime.now()),
+    Transaction(
+        id: '2',
+        title: 'logitech mousepad',
+        value: 120.00,
+        date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Expenses'),
-      ),
-      body: Center(
-        child: Text('Initial version'), // Use Text widget for displaying text
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Expenses'),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                  color: Colors.blue, child: Text('Graphic'), elevation: 5),
+            ),
+            Column(
+              children: _transactions.map((tr) {
+                return Card(child: Text(tr.title));
+              }).toList(),
+            )
+          ],
+        ));
   }
 }

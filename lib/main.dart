@@ -55,7 +55,7 @@ class MyHomePage extends StatelessWidget {
                         width: 2,
                       )),
                       padding: EdgeInsets.all(10),
-                      child: Text(tr.value.toString(),
+                      child: Text("R\$  ${tr.value.toStringAsFixed(2)}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -63,7 +63,13 @@ class MyHomePage extends StatelessWidget {
                           )),
                     ),
                     Column(
-                      children: [Text(tr.title), Text(tr.date.toString())],
+                      children: [
+                        Text(tr.title,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(tr.date.toString(),
+                            style: TextStyle(color: Colors.grey[600]))
+                      ],
                     )
                   ],
                 ));

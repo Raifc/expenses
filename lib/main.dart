@@ -20,6 +20,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Expenses'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -28,13 +34,18 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child:
-                  Card(color: Colors.blue, child: Text('Graphic'), elevation: 5),
+              child: Card(
+                  color: Colors.blue, child: Text('Graphic'), elevation: 5),
             ),
             TransactionUser(),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

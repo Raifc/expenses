@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TransactionForm extends    {
+class TransactionForm extends StatefulWidget {
   final void Function(String, double) onSubmit;
   TransactionForm(this.onSubmit);
 
@@ -10,7 +10,6 @@ class TransactionForm extends    {
 
 class _TransactionFormState extends State<TransactionForm> {
   final titleController = TextEditingController();
-
   final valueController = TextEditingController();
 
   _submitForm() {

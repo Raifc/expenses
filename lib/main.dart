@@ -47,14 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
   final _transactions = [
     Transaction(
       id: 't1',
-      title: 'Novo Tênis de Corrida',
-      value: 310.76,
+      title: 'Logitech Mouse',
+      value: 618.90,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
+      title: 'Keychron Keyboard',
+      value: 711.30,
       date: DateTime.now(),
     ),
   ];
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Despesas Pessoais'),
+        title: const Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Card(
                 color: Colors.blue,
                 elevation: 5,
-                child: Text('Gráfico'),
+                child: Text('Graphic'),
               ),
             ),
             TransactionList(_transactions),

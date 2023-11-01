@@ -29,41 +29,21 @@ class TransactionList extends StatelessWidget {
               itemCount: transactions.length,
               itemBuilder: (ctx, index) {
                 final tr = transactions[index];
-                return Card(
-                    child: Row(
-                  children: [
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
-                      padding: const EdgeInsets.all(10),
-                      child: Text("U\$  ${tr.value.toStringAsFixed(2)}",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.purple,
-                          )),
+                return ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: FittedBox(
+                        child: Text('U\$${tr.value}'),
+                      ),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          tr.title,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        Text(
-                          DateFormat('d MMM y').format(tr.date),
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                          ),
-                        )
-                      ],
+                    title: Text(
+                      tr.title,
+                      style: Theme.of(context).textTheme.title,
                     )
-                  ],
-                ));
+                  ),
+                );
               },
             ),
     );

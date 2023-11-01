@@ -1,3 +1,4 @@
+import 'package:expenses/components/chart.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import './components/transaction_form.dart';
@@ -49,15 +50,25 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't1',
       title: 'Logitech Mouse',
       value: 618.90,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 3)),
     ),
     Transaction(
       id: 't2',
       title: 'Keychron Keyboard',
       value: 711.30,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 4)),
     ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -99,14 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text('Graphic'),
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_transactions),
           ],
         ),

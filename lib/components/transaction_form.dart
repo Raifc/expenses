@@ -57,18 +57,18 @@ class _TransactionFormState extends State<TransactionForm> {
             TextField(
               controller: _titleController,
               onSubmitted: (_) => _submitForm(),
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
             ),
             TextField(
               controller: _valueController,
-              keyboardType: TextInputType.numberWithOptions(
+              keyboardType: const TextInputType.numberWithOptions(
                   decimal: true), // Remove 'const'
               onSubmitted: (_) => _submitForm(),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Value (U\$)',
               ),
             ),
-            Container(
+            SizedBox(
               height: 70,
               child: Row(
                 children: [
@@ -77,7 +77,7 @@ class _TransactionFormState extends State<TransactionForm> {
                       _selectedDate == null
                           ? 'No selected date'
                           : 'Selected date: ${DateFormat('d/M/y').format(_selectedDate!)}',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   TextButton(
@@ -85,11 +85,11 @@ class _TransactionFormState extends State<TransactionForm> {
                         textStyle: TextStyle(
                       color: Theme.of(context).primaryColor,
                     )),
-                    child: Text(
+                    onPressed: _showDatePicker,
+                    child: const Text(
                       'Select Date',
                       style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: _showDatePicker, // Remove parentheses here
+                    ), // Remove parentheses here
                   ),
                 ],
               ),
@@ -98,8 +98,8 @@ class _TransactionFormState extends State<TransactionForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  child: Text('New Transaction'),
                   onPressed: _submitForm,
+                  child: const Text('New Transaction'),
                 )
               ],
             )

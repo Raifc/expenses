@@ -9,7 +9,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 700,
       child: transactions.isEmpty
           ? Column(
@@ -17,7 +17,7 @@ class TransactionList extends StatelessWidget {
                 Text('There are no transactions yet.',
                     style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 20),
-                Container(
+                SizedBox(
                   height: 150,
                   child: Image.asset(
                     'assets/images/waiting.png',
@@ -54,7 +54,7 @@ class TransactionList extends StatelessWidget {
                       DateFormat('d MMM y').format(tr.date),
                     ),
                     trailing: IconButton(
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       color: Colors.red,
                       onPressed: () => onRemove(tr.id),
                     ),

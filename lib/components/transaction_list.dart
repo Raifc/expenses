@@ -17,7 +17,7 @@ class TransactionList extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 20),
                 Container(
-                  height: 200,
+                  height: 150,
                   child: Image.asset(
                     'assets/images/waiting.png',
                     fit: BoxFit.cover,
@@ -38,6 +38,7 @@ class TransactionList extends StatelessWidget {
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
+                      backgroundColor: Colors.purple,
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
                         child: FittedBox(
@@ -50,6 +51,11 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       DateFormat('d MMM y').format(tr.date),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Colors.red,
+                      onPressed: () {},
                     ),
                   ),
                 );

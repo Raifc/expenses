@@ -1,5 +1,6 @@
 import 'package:expenses/components/chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:math';
 import './components/transaction_form.dart';
 import './components/transaction_list.dart';
@@ -20,9 +21,9 @@ class ExpensesApp extends StatelessWidget {
           secondary: Colors.green,
         ),
         textTheme: theme.textTheme.copyWith(
-          titleLarge: const TextStyle(
+          titleLarge: TextStyle(
             fontFamily: 'Quicksand',
-            fontSize: 18,
+            fontSize: 18 * MediaQuery.of(context).textScaleFactor,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),

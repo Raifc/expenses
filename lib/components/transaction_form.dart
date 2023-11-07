@@ -48,62 +48,69 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: _titleController,
-              onSubmitted: (_) => _submitForm(),
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
-            TextField(
-              controller: _valueController,
-              keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true), // Remove 'const'
-              onSubmitted: (_) => _submitForm(),
-              decoration: const InputDecoration(
-                labelText: 'Value (U\$)',
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: 10,
+            right: 10,
+            left: 10,
+            bottom: 10 + MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: _titleController,
+                onSubmitted: (_) => _submitForm(),
+                decoration: const InputDecoration(labelText: 'Title'),
               ),
-            ),
-            SizedBox(
-              height: 70,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      _selectedDate == null
-                          ? 'No selected date'
-                          : 'Selected date: ${DateFormat('d/M/y').format(_selectedDate!)}',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+              TextField(
+                controller: _valueController,
+                keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true), // Remove 'const'
+                onSubmitted: (_) => _submitForm(),
+                decoration: const InputDecoration(
+                  labelText: 'Value (U\$)',
+                ),
+              ),
+              SizedBox(
+                height: 70,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        _selectedDate == null
+                            ? 'No selected date'
+                            : 'Selected date: ${DateFormat('d/M/y').format(_selectedDate!)}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        textStyle: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                    )),
-                    onPressed: _showDatePicker,
-                    child: const Text(
-                      'Select Date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ), // Remove parentheses here
-                  ),
-                ],
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          textStyle: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      )),
+                      onPressed: _showDatePicker,
+                      child: const Text(
+                        'Select Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ), // Remove parentheses here
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Text('New Transaction'),
-                )
-              ],
-            )
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: _submitForm,
+                    child: const Text('New Transaction'),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

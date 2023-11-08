@@ -23,7 +23,7 @@ class ExpensesApp extends StatelessWidget {
         textTheme: theme.textTheme.copyWith(
           titleLarge: TextStyle(
             fontFamily: 'Quicksand',
-            fontSize: 18 * MediaQuery.of(context).textScaleFactor,
+            fontSize: 18 * mediaQuery.textScaleFactor,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -93,8 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     bool isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+        mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
       title: const Text('Personal Expenses'),
       actions: <Widget>[
@@ -114,9 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final avaiableHeight = MediaQuery.of(context).size.height -
+    final avaiableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
 
     return Scaffold(
       appBar: appBar,
@@ -141,12 +142,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (_showChart || !isLandscape)
               SizedBox(
-                height: avaiableHeight * (isLandscape ? 0.7 : 0.3),
+                height: avaiableHeight * (isLandscape ? 0.8 : 0.2),
                 child: Chart(_recentTransactions),
               ),
             if (!_showChart || !isLandscape)
               SizedBox(
-                height: avaiableHeight * 0.7,
+                height: avaiableHeight * (isLandscape ? 1 : 0.7),
                 child: TransactionList(_transactions, _removeTransaction),
               ),
           ],

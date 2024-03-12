@@ -1,16 +1,17 @@
 import 'package:expenses/components/chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:io';
 import 'dart:math';
 import './components/transaction_form.dart';
 import './components/transaction_list.dart';
 import 'models/transaction.dart';
 
-main() => runApp(ExpensesApp());
+main() => runApp(const ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
+  const ExpensesApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
@@ -51,7 +52,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Transaction> _transactions = [];
+  final List<Transaction> _transactions = [];
   bool _showChart = false;
 
   List<Transaction> get _recentTransactions {
@@ -185,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              middle: Text('Personal Expenses'),
+              middle: const Text('Personal Expenses'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: actions,

@@ -50,7 +50,7 @@ class AdaptativeDatePicker extends StatelessWidget {
                   child: Text(
                     selectedDate == null
                         ? 'No selected date'
-                        : 'Selected date: ${DateFormat('d/M/y').format(selectedDate!)}',
+                        : 'Selected date: ${DateFormat('d/M/y').format(selectedDate)}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

@@ -20,11 +20,11 @@ class _TransactionFormState extends State<TransactionForm> {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0.0;
 
-    if (title.isEmpty || value <= 0 || _selectedDate == null) {
+    if (title.isEmpty || value <= 0) {
       return;
     }
 
-    widget.onSubmit(title, value, _selectedDate!);
+    widget.onSubmit(title, value, _selectedDate);
   }
 
   @override
